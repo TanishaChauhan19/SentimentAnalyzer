@@ -1,6 +1,6 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel
+from pydantic import BaseModel, validator
 from typing import List, Dict, Optional
 import sentiment
 from twitter_api import fetch_tweets_by_hashtag, get_rate_limit_status
@@ -21,7 +21,13 @@ class TextRequest(BaseModel):
 
 class TweetRequest(BaseModel):
     hashtag: str
-    max_tweets: Optional[int] = 100
+    max_tweets: Optional[int] = 10
+
+    @validator('max_tweets')
+    def validate_max_tweets(cls, v):
+        if v is not None and v > 10:
+            raise ValueError("max_tweets cannot exceed 10")
+        return v
 
 class TweetResponse(BaseModel):
     analyzed_tweets: List[Dict]
@@ -31,8 +37,9 @@ class TweetResponse(BaseModel):
 @app.post("/analyze-text")
 async def analyze_text(request: TextRequest):
     try:
-        emotions = sentiment.analyze_text(request.text)
-        dominant_emotion = max(emotions.items(), key=lambda x: x[1])[0]
+        result = sentiment.analyse_sentiment(request.text)
+        emotions = result.get('emotions', {})
+        dominant_emotion = max(emotions.items(), key=lambda x: x[1])[0] if emotions else None
         return {"emotions": emotions, "dominant_emotion": dominant_emotion}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -58,8 +65,9 @@ async def analyze_tweets(request: TweetRequest):
         # Analyze each tweet
         analyzed_tweets = []
         for tweet in tweets_result:
-            emotions = sentiment.analyze_text(tweet)
-            dominant_emotion = max(emotions.items(), key=lambda x: x[1])[0]
+            result = sentiment.analyse_sentiment(tweet)
+            emotions = result.get('emotions', {})
+            dominant_emotion = max(emotions.items(), key=lambda x: x[1])[0] if emotions else None
             analyzed_tweets.append({
                 "tweet": tweet,
                 "emotions": emotions,
