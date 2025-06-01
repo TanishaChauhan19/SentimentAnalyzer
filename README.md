@@ -1,6 +1,7 @@
 # Sentiment Analysis Application
 
 A sophisticated sentiment analysis application that uses advanced ML models to analyze emotions in text.
+<img width="946" alt="{CCA1D3CB-ED73-48A4-B5DF-F4BC217AD9EB}" src="https://github.com/user-attachments/assets/dc155bab-75f9-41b7-bd34-f29453f44a47" />
 
 ## Setup
 
