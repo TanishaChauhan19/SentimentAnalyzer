@@ -1,0 +1,179 @@
+.tab-navigation{
+    margin-bottom: 2rem;
+    padding: 1rem;
+    background-color: #f8f9fa;
+    border-radius: 4px;
+}
+.tab-button {
+    padding: 0.5rem 1rem;
+    margin-right: 0.5rem;
+    background-color: var(--tab-bg);
+    color: var(--tab-color);
+    border: 1px solid ;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.tab-button.active {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.tab-button:hover {
+    opacity: 0.9;
+}
+
+:root {
+    --tab-bg: #fff;
+    --tab-color: #007bff;
+}
+
+/* The active state will override these variables */
+.tab-button.active {
+    --tab-bg: #007bff;
+    --tab-color: #fff;
+}
+
+/* App container styles */
+.app-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+.tab-controls {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+/* Text input styles */
+.text-input {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+textarea.text-input {
+    width: 100%;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    font-size: 1rem;
+    border-radius: 4px;
+    border: 1px solid #ced4da;
+}
+
+.hashtag-input input {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    border-radius: 4px;
+    border: 1px solid #ced4da;
+}
+
+/* Button styles */
+.analyze-button {
+    padding: 0.5rem 1rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.analyze-button:disabled {
+    background-color: #6c757d;
+    cursor: not-allowed;
+}
+
+/* Error message styles */
+.error-message {
+    color: #dc3545;
+    margin-top: 1rem;
+    padding: 0.5rem;
+    background-color: #f8d7da;
+    border-radius: 4px;
+    border: 1px solid #f5c6cb;
+}
+
+/* Summary styles */
+.summary-container {
+    margin-top: 1rem;
+    padding: 1rem;
+    background-color: #e3f2fd;
+    border-radius: 4px;
+    border: 1px solid #90caf9;
+    white-space: pre-line;
+}
+
+.summary-title {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.1rem;
+    color: #1976d2;
+}
+
+.summary-content {
+    color: #333;
+}
+
+/* Cache notice styles */
+.cache-notice {
+    margin-top: 1rem;
+    padding: 0.5rem;
+    background-color: #fff3cd;
+    color: #856404;
+    border-radius: 4px;
+    border: 1px solid #ffeeba;
+}
+
+/* Analysis status styles */
+.analysis-status {
+    margin-top: 1rem;
+    padding: 0.5rem;
+    background-color: #f8f9fa;
+    border-radius: 4px;
+}
+
+/* Chart section styles */
+.chart-section {
+    margin-top: 2rem;
+    max-width: 500px;
+}
+
+.dominant-emotion {
+    background-color: #007bff;
+    color: white;
+    padding: 1rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+/* Tweet analysis styles */
+.tweets-container {
+    margin-top: 2rem;
+}
+
+.tweets-list {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.tweet-item {
+    padding: 1rem;
+    margin-bottom: 1rem;
+    background-color: #f8f9fa;
+    border-radius: 4px;
+    border: 1px solid #dee2e6;
+}
+
+.tweet-text {
+    margin-bottom: 0.5rem;
+}
+
+.tweet-emotion {
+    color: #007bff;
+    font-size: 0.875rem;
+}
